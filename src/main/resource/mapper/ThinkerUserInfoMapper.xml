@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hope.washcar.dao.ThinkerUserInfoMapper">
+
+<resultMap id="resultMap" type="com.hope.washcar.bean.ThinkerUserInfoBean">
+    <id property="id" column="ID"/>
+    <result property="collectionCount" column="COLLECTIONCOUNT"/>
+    <result property="customerCount" column="CUSTOMERCOUNT"/>
+    <result property="customerUseing" column="CUSTOMERUSEING"/>
+    <result property="hostDate" column="host_date"/>
+    <result property="submerName" column="submer_name"/>
+</resultMap>
+
+<!--查询客户总量-->
+<select id="countCustomer" resultType="com.hope.washcar.bean.ThinkerUserInfoBean">
+		select  count(pr.user_name)as CUSTOMERCOUNT from pay_result pr
+
+	</select>
+
+<select id="countCollection" parameterType="com.hope.washcar.bean.ThinkerUserInfoBean"
+        resultType="java.math.BigDecimal">
+    SELECT sum(amount)COLLECTIONCOUNT FROM pay_result
+    WHERE 1 = 1
+    <if test="hostDate != null">
+        and host_date = #{userInfo.hostDate}
+    </if>
+
+    <if test="submerName != null">
+        and submer_name = #{userInfo.submerName}
+    </if>
+</select>
+
+    <select id="customerUseing" parameterType="com.hope.washcar.bean.ThinkerUserInfoBean"
+            resultType="java.lang.Long">
+        SELECT count(id) CUSTOMERUSEING FROM pay_result
+        WHERE 1 = 1
+        <if test="hostDate != null">
+            and host_date = #{userInfo.hostDate}
+        </if>
+
+        <if test="submerName != null">
+            and submer_name = #{userInfo.submerName}
+        </if>
+    </select>
+</mapper>
+

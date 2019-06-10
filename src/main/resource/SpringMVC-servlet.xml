@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<context:component-scan base-package="com.hope.washcar.controller"></context:component-scan>
+	<!-- 配置映射器 -->
+	<!-- 作用:告诉前端控制器,什么样的url对应什么样的Controller -->
+	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+	
+	<!-- 配置适配器 -->
+	<!-- 作用:告诉前端控制器,需要调用Controller中的哪个方法 -->
+	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+
+
+	<!-- 配置视图解析器 -->
+	<!-- 作用:告诉前端控制器,怎样把逻辑视图名转换为具体的视图路径 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+		<!-- 设置视图中对jstl标签库的支持 -->
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>  
+		<!-- 设置逻辑视图名的前缀 -->
+		<property name="prefix" value="/WEB-INF/jsp/"/>  
+		<!-- 设置逻辑视图名的后缀 -->
+		<property name="suffix" value=".jsp"/>  
+	</bean>
+
+	<!-- 前端控制器的映射路径配置成了/,然后静态资源就不能访问了 -->
+	<!-- 解决静态资源不能访问的问题 -->
+	<mvc:resources location="/static/js/"     mapping="/static/js/**"/>
+	<mvc:resources location="/static/css/"    mapping="/static/css/**"/>
+	<mvc:resources location="/static/images/" mapping="/static/images/**"/>
+<!--	<mvc:annotation-driven>-->
+<!--		<mvc:message-converters-->
+<!--				register-defaults="true">-->
+<!--			&lt;!&ndash; 避免返回String乱码 &ndash;&gt;-->
+<!--			<bean-->
+<!--					class="org.springframework.http.converter.StringHttpMessageConverter">-->
+<!--				<property name="supportedMediaTypes">-->
+<!--					<list>-->
+<!--						<value>text/plain;charset=UTF-8</value>-->
+<!--						<value>text/html;charset=UTF-8</value>-->
+<!--					</list>-->
+<!--				</property>-->
+<!--			</bean>-->
+<!--			&lt;!&ndash; Json转换，property 避免IE执行AJAX时,返回JSON出现下载文件 &ndash;&gt;-->
+<!--			<bean-->
+<!--					class="org.springframework.http.converter.json.GsonHttpMessageConverter">-->
+<!--				<property name="supportedMediaTypes">-->
+<!--					<list>-->
+<!--						<value>text/plain;charset=UTF-8</value>-->
+<!--						<value>application/json;charset=UTF-8</value>-->
+<!--					</list>-->
+<!--				</property>-->
+<!--				<property name="gson">-->
+<!--					<bean-->
+<!--							class="org.springframework.http.converter.json.GsonFactoryBean">-->
+<!--						&lt;!&ndash; 输出null，false则不输出null值 &ndash;&gt;-->
+<!--						<property name="serializeNulls"-->
+<!--								  value="false" />-->
+<!--						&lt;!&ndash; 不对html标签转码，false会导致所有html标签转码为 \ue300 格式 &ndash;&gt;-->
+<!--						<property name="disableHtmlEscaping"-->
+<!--								  value="true" />-->
+<!--						&lt;!&ndash; 格式化日期 &ndash;&gt;-->
+<!--						<property name="dateFormatPattern"-->
+<!--								  value="yyyy-MM-dd HH:mm:ss:SSS" />-->
+<!--					</bean>-->
+<!--				</property>-->
+<!--			</bean>-->
+<!--		</mvc:message-converters>-->
+<!--	</mvc:annotation-driven>-->
+
+</beans>

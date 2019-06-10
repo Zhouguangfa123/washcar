@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan
+            base-package="com.hope.washcar.*"></context:component-scan>
+    <!-- 读取这个资源文件 读完之后下面就可以用${key}来去文件中的value值了 -->
+    <context:property-placeholder location="classpath:mysql.properties" />
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${con.driverClass}"></property>
+        <property name="url" value="${con.url}"></property>
+        <property name="username" value="${con.username}"></property>
+        <property name="password" value="${con.password}"></property>
+        <property name="maxActive" value="${con.maxActive}"></property>
+        <property name="initialSize" value="${con.initialSize}"></property>
+        <property name="maxIdle" value="${con.maxIdle}"></property>
+        <property name="minIdle" value="${con.minIdle}"></property>
+    </bean>
+    <bean id="sqlSessionFactory"
+          class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 加载mybatis的全局配置文件 -->
+        <property name="configLocation"
+                  value="classpath:mybatis-config.xml"></property>
+        <!-- 数据库连接池 -->
+        <property name="dataSource" ref="dataSource"></property>
+        <!-- 指定mybatis mapper文件的位置 -->
+        <property name="mapperLocations"
+                  value="classpath*:mapper/*.xml"></property>
+    </bean>
+    <!-- 3.mapper扫描器 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 扫描包路径，如果需要扫描多个包，中间使用半角逗号隔开 -->
+        <property name="basePackage" value="com.hope.washcar.dao"></property>
+        <property name="sqlSessionFactoryBeanName"
+                  value="sqlSessionFactory"></property>
+    </bean>
+    <!--&lt;!&ndash; 对数据源进行事务管理 &ndash;&gt;-->
+    <!--<bean id="transactionManager"-->
+          <!--class="org.springframework.jdbc.datasource.DataSourceTransactionManager"-->
+          <!--p:dataSource-ref="dataSource" />-->
+    <!--<tx:annotation-driven transaction-manager="transactionManager" />-->
+
+</beans>
