@@ -43,8 +43,8 @@ public class ThinkerUserInfoController {
     @ResponseBody
     public Map<String, ThinkerUserInfoBean> getUserInfoLit(HttpServletRequest request,ThinkerUserInfoBean thinkerUserInfoBean) {
         userInfoService.countCustomer();
-//        userInfoService.getUserInfoLit(userInfoBean).get("userInfo").getCollectionCount();
-//        userInfoService.getUserInfoLit(userInfoBean).get("userInfo").getCustomerUseing();
+        userInfoService.getUserInfoLit(thinkerUserInfoBean).get("userInfo").getCustomerUseing();
+        System.out.println("xxx");
 //        return userInfoService.getUserInfoLit(userInfoBean);
         return null;
     }
