@@ -11,6 +11,8 @@ public class UserInfoBean {
 
     private String userName;
 
+    private String password;
+
     public UserInfoBean(Integer userId, String userName) {
         this.userId = userId;
         this.userName = userName;
