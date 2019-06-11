@@ -7,7 +7,4 @@ package com.hope.washcar.controller;
  * @date 2019/6/11
  */
 public class UserInfoContrller {
-    public static void main(String[] args) {
-
-    }
 }
