@@ -1,5 +1,7 @@
 package com.hope.washcar.bean;
 
+import java.util.Date;
+
 /**
  * UserInfoBean
  *
@@ -11,26 +13,22 @@ public class UserInfoBean {
 
     private String userName;
 
-    private String password;
+    private String userPassword;
 
-    public UserInfoBean(Integer userId, String userName) {
-        this.userId = userId;
-        this.userName = userName;
-    }
+    private String userPhone;
 
-    public Integer getUserId() {
-        return userId;
-    }
+    private String userStatus;
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+    private String userSystem;
 
-    public String getUserName() {
-        return userName;
-    }
+    private String spare1;
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+    private String spare2;
+
+    private String spare3;
+
+    private Date createTime;
+
+    private Date updateTime;
+
 }

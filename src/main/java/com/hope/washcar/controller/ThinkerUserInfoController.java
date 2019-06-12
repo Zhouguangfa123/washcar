@@ -19,27 +19,11 @@ public class ThinkerUserInfoController {
     private ThinkerUserInfoService userInfoService;
 
     /**
-     * login 登录
-     *
-     * @param  model 视图
-     * @return ModelAndView
-     */
-    @RequestMapping("/login")
-    public ModelAndView login(ModelAndView model) {
-        model.setViewName("thinker");
-//        DecimalFormat df = new DecimalFormat("0");
-//        Double d = new Double("1.397545871E10");
-//        System.out.println(df.format(d));
-//        model.addObject("userInfo",userInfoService.getUserInfoLit(null).get("userInfo"));
-        return model;
-    }
-
-    /**
      * getUserInfoLit 获取用户详细信息
      *
      * @return Map
      */
-    @RequestMapping("/getUserInfoLit")
+    @RequestMapping("/getThinkerUserInfoLit")
     @ResponseBody
     public Map<String, ThinkerUserInfoBean> getUserInfoLit(HttpServletRequest request,ThinkerUserInfoBean thinkerUserInfoBean) {
         userInfoService.countCustomer();

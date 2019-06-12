@@ -50,8 +50,8 @@
 <script>
     // 查询user信息
     function getUserInfoLit() {
-        const submerName = $('#submerName').val();
-        const hostDate = $('#hostDate').val();
+        var submerName = $('#submerName').val();
+        var hostDate = $('#hostDate').val();
         $.ajax({
             type: "post",
             async: false, //同步请求
