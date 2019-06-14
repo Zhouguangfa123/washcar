@@ -21,7 +21,7 @@
             <div class="panel-heading">
                 查询条件
             </div>
-            <div class="panel-body form-group" style="margin-bottom:0px;">
+            <div class="panel-body form-group" style="margin-bottom:0px;" id="queryParams">
                 <label class="col-sm-2 control-label" style="text-align: right; margin-top:5px">用户名：</label>
                 <div class="col-sm-2">
                     <input type="text" class="form-control" name="userName" id="userName"/>
@@ -31,7 +31,7 @@
                     <input type="date" class="form-control" name="userSystem" id="userSystem"/>
                 </div>
                 <div class="col-sm-2 pull-left">
-                    <button class="btn btn-primary" onclick="initMainTable()" id="searchBtn">查询</button>
+                    <button class="btn btn-primary" onclick="getUserInfoLit()" id="searchBtn">查询</button>
                 </div>
             </div>
             <div>
@@ -44,7 +44,6 @@
 <script>
     var table;
     function initMainTable() {
-        debugger;
         var rows = 10;
         //记录页面bootstrap-table全局变量$table，方便应用
         var queryUrl = 'getUserInfoLit';
@@ -58,6 +57,7 @@
             sortable: true,                     //是否启用排序
             sortOrder: "asc",                   //排序方式
             sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+            // sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
             pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
             pageSize: rows,                     //每页的记录行数（*）
             pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
@@ -82,9 +82,9 @@
                 console.log(params.order);
                 var temp = {
                     rows: params.limit,                         //页面大小
-                    page: (params.offset / params.limit) + 1,   //页码
+                    // page: (params.offset / params.limit) + 1,   //页码
                     sort: params.sort,      //排序列名
-                    sortOrder: params.order //排位命令（desc，asc）
+                    sortOrder: params.order ,//排位命令（desc，asc）
                 };
                 return temp;
             },
@@ -99,15 +99,7 @@
                 field: 'userName',
                 title: '用户名',
                 sortable: true
-                // }, {
-                //     field: 'ID',
-                //     title: '操作',
-                //     width: 120,
-                //     align: 'center',
-                //     valign: 'middle',
-                //     formatter: actionFormatter
-                // },
-            }  ,],
+            } ,],
             onLoadSuccess: function (res) {
                 console.info("加载成功");
                 console.log(res)
@@ -120,13 +112,31 @@
                 // var id = row.ID;
                 // EditViewById(id, 'view');
             },
+            // responseHandler:function(res){
+            //     return  $.parseJSON(res)
+            // },
         })
-    }
+    };
     //默认加载数据
    $(document).ready(function () {
        initMainTable();
-       // initMainTable1()
-   })
+   });
+   //点击查询按钮
+   function getUserInfoLit(){
+         var queryParams = {userName: $('#userName').val()}
+        console.log(queryParams);
+        $.ajax({
+            type: "post",
+            url: "getUserInfoLit",
+            data: queryParams,
+            dataType:"json",
+            success : function(json) {
+                $("#table").bootstrapTable('load', json);
+            }
+        });
+    }
+
+
 </script>
 </body>
 </html>

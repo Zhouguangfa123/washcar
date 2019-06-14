@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,8 +24,8 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public Map<String,Object> getUserInfoList(UserInfoBean userInfoBean) {
         Map<String,Object> resultMap = new HashMap<>(8);
-        resultMap.put("rows", userInfoDao.getUserInfoList(userInfoBean));
-        resultMap.put("total", 1);
+        List<UserInfoBean> userInfoList = userInfoDao.getUserInfoList(userInfoBean);
+        resultMap.put("data", userInfoList);
         return resultMap;
     }
 }
