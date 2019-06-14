@@ -17,7 +17,7 @@ import org.mybatis.generator.internal.DefaultShellCallback;
 /**
  * MBGTest class
  * 
- * @author wangzhaorui
+ * @author zhougf
  * @date 2018/08/06
  */
 public class MbTest {

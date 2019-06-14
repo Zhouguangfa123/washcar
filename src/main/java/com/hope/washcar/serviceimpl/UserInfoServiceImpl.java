@@ -23,7 +23,8 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public Map<String,Object> getUserInfoList(UserInfoBean userInfoBean) {
         Map<String,Object> resultMap = new HashMap<>(8);
-        resultMap.put("userInfoList", userInfoDao.getUserInfoList(userInfoBean));
+        resultMap.put("rows", userInfoDao.getUserInfoList(userInfoBean));
+        resultMap.put("total", 1);
         return resultMap;
     }
 }

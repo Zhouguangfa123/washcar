@@ -1,8 +1,17 @@
 package com.hope.washcar.controller;
 
+import com.hope.washcar.bean.ThinkerUserInfoBean;
+import com.hope.washcar.bean.UserInfoBean;
+import com.hope.washcar.common.JsonParse;
+import com.hope.washcar.service.UserInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 /**
  * UserInfoContrller
@@ -12,6 +21,10 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class UserInfoContrller {
+
+    @Autowired
+    private UserInfoService userInfoService;
+
     /**
      * login 登录
      *
@@ -22,6 +35,18 @@ public class UserInfoContrller {
     public ModelAndView login(ModelAndView model) {
         model.setViewName("userInfoList");
         return model;
+    }
+
+    /**
+     * getUserInfoLit 获取用户详细信息
+     *
+     * @return Map
+     */
+    @RequestMapping("/getUserInfoLit")
+    @ResponseBody
+    public Map<String,Object> getUserInfoLit() {
+        String jsonStr = JsonParse.GSON.toJson(userInfoService.getUserInfoList(null));
+        return userInfoService.getUserInfoList(null);
     }
 
 }

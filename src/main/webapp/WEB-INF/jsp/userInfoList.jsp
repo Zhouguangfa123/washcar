@@ -2,10 +2,17 @@
 <head>
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <title>washCar</title>
-    <!-- 引入 Bootstrap -->
+    <!-- 引入 Bootstrap 样式-->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- 引入bootstrap-table样式 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css">
+    <!-- jquery -->
     <script src="${pageContext.request.contextPath}/static/js/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- bootstrap-table.min.js -->
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+    <!-- 引入中文语言包 -->
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
 </head>
 <body>
 <div class="head" style="height: 100%; width: 100%">
@@ -24,19 +31,11 @@
                     <input type="date" class="form-control" name="userSystem" id="userSystem"/>
                 </div>
                 <div class="col-sm-2 pull-left">
-                    <button class="btn btn-primary" id="searchBtn">查询</button>
+                    <button class="btn btn-primary" onclick="initMainTable()" id="searchBtn">查询</button>
                 </div>
             </div>
             <div>
-                <table data-toggle="table" data-url="data1.json" id="table">
-                    <thead>
-                    <tr>
-                        <th data-field="id">Item ID</th>
-                        <th data-field="name">Item Name</th>
-                        <th data-field="price">Item Price</th>
-                    </tr>
-                    </thead>
-                </table>
+                   <table id="table"></table>
             </div>
         </div>
     </div>
@@ -44,20 +43,21 @@
 </div>
 <script>
     var table;
-    function initMainTable () {
+    function initMainTable() {
         debugger;
+        var rows = 10;
         //记录页面bootstrap-table全局变量$table，方便应用
-        var queryUrl = '/TestUser/FindWithPager?rnd=' + Math.random()
+        var queryUrl = 'getUserInfoLit';
         table = $('#table').bootstrapTable({
             url: queryUrl,                      //请求后台的URL（*）
-            method: 'GET',                      //请求方式（*）
+            method: 'POST',                      //请求方式（*）
             //toolbar: '#toolbar',              //工具按钮用哪个容器
             striped: true,                      //是否显示行间隔色
             cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
             pagination: true,                   //是否显示分页（*）
             sortable: true,                     //是否启用排序
             sortOrder: "asc",                   //排序方式
-            sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+            sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
             pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
             pageSize: rows,                     //每页的记录行数（*）
             pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
@@ -68,13 +68,18 @@
             minimumCountColumns: 2,             //最少允许的列数
             clickToSelect: true,                //是否启用点击选中行
             //height: 500,                      //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-            uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
+            uniqueId: "userId",                     //每一行的唯一标识，一般为主键列
             showToggle: true,                   //是否显示详细视图和列表视图的切换按钮
             cardView: false,                    //是否显示详细视图
             detailView: false,                  //是否显示父子表
             //得到查询的参数
             queryParams: function (params) {
                 //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+                console.log('参数打印');
+                console.log(params.limit);
+                console.log(params.offset);
+                console.log(params.sort);
+                console.log(params.order);
                 var temp = {
                     rows: params.limit,                         //页面大小
                     page: (params.offset / params.limit) + 1,   //页码
@@ -87,65 +92,40 @@
                 checkbox: true,
                 visible: true                  //是否显示复选框
             }, {
-                field: 'Name',
-                title: '姓名',
+                field: 'userId',
+                title: '用户ID',
                 sortable: true
             }, {
-                field: 'Mobile',
-                title: '手机',
+                field: 'userName',
+                title: '用户名',
                 sortable: true
-            }, {
-                field: 'Email',
-                title: '邮箱',
-                sortable: true,
-                formatter: emailFormatter
-            }, {
-                field: 'Homepage',
-                title: '主页',
-                formatter: linkFormatter
-            }, {
-                field: 'Hobby',
-                title: '兴趣爱好'
-            }, {
-                field: 'Gender',
-                title: '性别',
-                sortable: true
-            }, {
-                field: 'Age',
-                title: '年龄'
-            }, {
-                field: 'BirthDate',
-                title: '出生日期',
-                formatter: dateFormatter
-            }, {
-                field: 'Height',
-                title: '身高'
-            }, {
-                field: 'Note',
-                title: '备注'
-            }, {
-                field: 'ID',
-                title: '操作',
-                width: 120,
-                align: 'center',
-                valign: 'middle',
-                formatter: actionFormatter
-            },],
-            onLoadSuccess: function () {
+                // }, {
+                //     field: 'ID',
+                //     title: '操作',
+                //     width: 120,
+                //     align: 'center',
+                //     valign: 'middle',
+                //     formatter: actionFormatter
+                // },
+            }  ,],
+            onLoadSuccess: function (res) {
+                console.info("加载成功");
+                console.log(res)
             },
             onLoadError: function () {
-                showTips("数据加载失败！");
+                // showTips("数据加载失败！");
+                 alert("数据加载失败！");
             },
             onDblClickRow: function (row, $element) {
-                var id = row.ID;
-                EditViewById(id, 'view');
+                // var id = row.ID;
+                // EditViewById(id, 'view');
             },
         })
     }
-
     //默认加载数据
    $(document).ready(function () {
        initMainTable();
+       // initMainTable1()
    })
 </script>
 </body>

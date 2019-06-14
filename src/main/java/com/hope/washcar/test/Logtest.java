@@ -7,13 +7,13 @@ import org.apache.log4j.Logger;
 
 /**
  * 
- * @author wangzhaorui
+ * @author zhougf
  * @date 2018/09/07
  */
 public class Logtest {
 
 	/**
-	 * @param args
+	 * @param para1
 	 */
 	public void outputLog(String para1, String para2) {
 		/** 日志管理*/
