@@ -31,44 +31,14 @@
 	<mvc:resources location="/static/js/"     mapping="/static/js/**"/>
 	<mvc:resources location="/static/css/"    mapping="/static/css/**"/>
 	<mvc:resources location="/static/images/" mapping="/static/images/**"/>
-<!--	<mvc:annotation-driven>-->
-<!--		<mvc:message-converters-->
-<!--				register-defaults="true">-->
-<!--			&lt;!&ndash; 避免返回String乱码 &ndash;&gt;-->
-<!--			<bean-->
-<!--					class="org.springframework.http.converter.StringHttpMessageConverter">-->
-<!--				<property name="supportedMediaTypes">-->
-<!--					<list>-->
-<!--						<value>text/plain;charset=UTF-8</value>-->
-<!--						<value>text/html;charset=UTF-8</value>-->
-<!--					</list>-->
-<!--				</property>-->
-<!--			</bean>-->
-<!--			&lt;!&ndash; Json转换，property 避免IE执行AJAX时,返回JSON出现下载文件 &ndash;&gt;-->
-<!--			<bean-->
-<!--					class="org.springframework.http.converter.json.GsonHttpMessageConverter">-->
-<!--				<property name="supportedMediaTypes">-->
-<!--					<list>-->
-<!--						<value>text/plain;charset=UTF-8</value>-->
-<!--						<value>application/json;charset=UTF-8</value>-->
-<!--					</list>-->
-<!--				</property>-->
-<!--				<property name="gson">-->
-<!--					<bean-->
-<!--							class="org.springframework.http.converter.json.GsonFactoryBean">-->
-<!--						&lt;!&ndash; 输出null，false则不输出null值 &ndash;&gt;-->
-<!--						<property name="serializeNulls"-->
-<!--								  value="false" />-->
-<!--						&lt;!&ndash; 不对html标签转码，false会导致所有html标签转码为 \ue300 格式 &ndash;&gt;-->
-<!--						<property name="disableHtmlEscaping"-->
-<!--								  value="true" />-->
-<!--						&lt;!&ndash; 格式化日期 &ndash;&gt;-->
-<!--						<property name="dateFormatPattern"-->
-<!--								  value="yyyy-MM-dd HH:mm:ss:SSS" />-->
-<!--					</bean>-->
-<!--				</property>-->
-<!--			</bean>-->
-<!--		</mvc:message-converters>-->
-<!--	</mvc:annotation-driven>-->
-
+	<!-- 登陆拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*" />
+			<mvc:exclude-mapping
+					path="request.getContextPath()" />
+			<!-- 验证码生成不做拦截处理 -->
+			<bean class="com.hope.washcar.business.LoginInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

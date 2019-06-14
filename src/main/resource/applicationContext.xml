@@ -41,5 +41,9 @@
           <!--class="org.springframework.jdbc.datasource.DataSourceTransactionManager"-->
           <!--p:dataSource-ref="dataSource" />-->
     <!--<tx:annotation-driven transaction-manager="transactionManager" />-->
+    <!-- 增加redis的properties文件 -->
+    <!-- 导入redis的配置文件 -->
+    <context:property-placeholder location="classpath:redis.properties" />
+    <import resource="redis-config.xml"/>
 
 </beans>

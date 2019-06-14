@@ -3,6 +3,7 @@ package com.hope.washcar.controller;
 import com.google.gson.JsonObject;
 import com.hope.washcar.bean.UserInfoBean;
 import com.hope.washcar.common.JsonParse;
+import com.hope.washcar.common.RedisUtil;
 import com.hope.washcar.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,9 @@ public class UserInfoContrller {
     @Autowired
     private UserInfoService userInfoService;
 
+    @Autowired
+    private RedisUtil redisUtil;
+
     /**
      * login µÇÂ¼
      *
@@ -34,6 +38,8 @@ public class UserInfoContrller {
      */
     @RequestMapping("/login")
     public ModelAndView login(ModelAndView model) {
+        redisUtil.set("x","x");
+        System.out.println(redisUtil.get("x"));
         model.setViewName("userInfoList");
         return model;
     }
