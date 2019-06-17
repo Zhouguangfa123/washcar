@@ -6,7 +6,7 @@
     <context:component-scan
             base-package="com.hope.washcar.*"></context:component-scan>
     <!-- 读取这个资源文件 读完之后下面就可以用${key}来去文件中的value值了 -->
-    <context:property-placeholder location="classpath:mysql.properties" />
+    <context:property-placeholder location="classpath:mysql.properties,classpath:redis.properties" />
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="${con.driverClass}"></property>
@@ -43,7 +43,5 @@
     <!--<tx:annotation-driven transaction-manager="transactionManager" />-->
     <!-- 增加redis的properties文件 -->
     <!-- 导入redis的配置文件 -->
-    <context:property-placeholder location="classpath:redis.properties" />
     <import resource="redis-config.xml"/>
-
 </beans>
