@@ -1,6 +1,8 @@
 package com.hope.washcar.test;
 
 import com.hope.washcar.common.RedisUtil;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import redis.clients.jedis.Jedis;
 
 /**
@@ -11,9 +13,11 @@ import redis.clients.jedis.Jedis;
  */
 public class RedisTtest {
     public static void main(String[] args) {
-//        RedisUtil redisUtil = new RedisUtil();
-//        redisUtil.set("x","x");
-//        redisUtil.get("x");
+        String[] path = {"redis-config.xml"};
+        ApplicationContext container =
+                new ClassPathXmlApplicationContext(path);
+        RedisUtil redisUtil = (RedisUtil)container.getBean("RedisUtil");
+        redisUtil.set("y","y");
 //        Jedis jedis = new Jedis("localhost");
 //        System.out.println("连接成功");
 //        //查看服务是否运行

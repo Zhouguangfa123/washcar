@@ -2,8 +2,11 @@ package com.hope.washcar.common;
 import java.io.Serializable;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.stereotype.Component;
+
 /**
  * RedisUtil
  *
@@ -11,8 +14,7 @@ import org.springframework.data.redis.core.ValueOperations;
  * @date 2019/6/14
  */
 
-
-
+@Component("RedisUtil")
 public class RedisUtil {
 
     private RedisTemplate<Serializable, Object> redisTemplate;
