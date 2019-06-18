@@ -16,6 +16,7 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
 </resultMap>
+    <!--查询用户列表支持条件模糊查询-->
  <select id="getUserInfoList" parameterType="com.hope.washcar.bean.UserInfoBean" resultMap="resultMap">
    select * from wc_user_info
    where 1=1
@@ -23,5 +24,18 @@
    and user_name like CONCAT('%',#{userName, jdbcType=VARCHAR},'%')
    </if>
  </select>
+
+    <!--查询用户-->
+    <select id="selectUserBySelected" parameterType="com.hope.washcar.bean.UserInfoBean" resultMap="resultMap">
+        select * from wc_user_info
+        where 1=1
+        <if test="userName != null">
+            and user_name = #{userName, jdbcType=VARCHAR}
+        </if>
+        <if test="userPassword != null">
+            and user_password = #{userPassword, jdbcType=VARCHAR}
+        </if>
+
+    </select>
 </mapper>
 

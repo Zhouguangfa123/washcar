@@ -18,4 +18,12 @@ public interface UserInfoMapper {
      * @return List
      */
     List<UserInfoBean> getUserInfoList(UserInfoBean userInfoBean);
+
+    /**
+     * selectUserBySelected 获取用户列表
+     *
+     * @param  userInfoBean 用户bean对象
+     * @return UserInfoBean
+     */
+    List<UserInfoBean> selectUserBySelected(UserInfoBean userInfoBean);
 }

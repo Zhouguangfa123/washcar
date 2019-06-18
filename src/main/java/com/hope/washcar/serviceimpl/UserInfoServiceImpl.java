@@ -28,4 +28,9 @@ public class UserInfoServiceImpl implements UserInfoService {
         resultMap.put("data", userInfoList);
         return resultMap;
     }
+
+    @Override
+    public List<UserInfoBean> checkUser(UserInfoBean userInfoBean) {
+        return userInfoDao.selectUserBySelected(userInfoBean);
+    }
 }

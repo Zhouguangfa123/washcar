@@ -22,19 +22,33 @@
 </head>
 <body>
 <div class="head" style="height: 100%; width: 100%">
-    <form role="form" method="post" action="/login" class="form">
+    <form role="form" method="post" action="${pageContext.request.contextPath}/login" class="form">
         <div class="form-group">
-            <label for="name">用户名</label>
-            <input type="text" class="form-control" id="name" placeholder="请输入名称">
+            <label for="userName">用户名</label>
+            <input type="text" class="form-control" name="userName" id="userName" placeholder="请输入名称" required>
         </div>
         <div class="form-group">
-            <label for="password">密码</label>
-            <input type="password" class="form-control" id="password" placeholder="请输入名称">
+            <label for="userPassword">密码</label>
+            <input type="password" class="form-control" name="userPassword" id="userPassword" placeholder="请输入密码" required>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn" value="登录">
+            <input type="button" class="btn" value="登录">
         </div>
     </form>
 </div>
+<script>
+    $(".btn").click(function () {
+        $.ajax({
+            type: "post",
+            url: $(".form").attr("action"),
+            data: $("form").serialize(),
+            dataType:"json",
+            success : function(res) {
+                if (res.success()){
+                }
+            }
+        })
+    });
+</script>
 </body>
 </html>

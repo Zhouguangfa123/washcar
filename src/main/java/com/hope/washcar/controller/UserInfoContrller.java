@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 /**
  * UserInfoContrller
  *
@@ -36,9 +38,16 @@ public class UserInfoContrller {
      * @return ModelAndView
      */
     @RequestMapping("/login")
-    public ModelAndView login(ModelAndView model) {
-        redisUtil.set("y","y");
-        System.out.println(redisUtil.get("y"));
+    @ResponseBody
+    public ModelAndView login(ModelAndView model, UserInfoBean user) {
+        List<UserInfoBean> userList = userInfoService.checkUser(user);
+        if (userList.size() != 1) {
+            model.addObject("success",false);
+            model.addObject("message","”√ªßªÚ√‹¬Î¥ÌŒÛ");
+            model.setViewName("error");
+            return  model;
+        }
+        model.addObject("success",true);
         model.setViewName("userInfoList");
         return model;
     }
