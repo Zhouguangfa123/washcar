@@ -32,3 +32,5 @@ CREATE TABLE `wc_user_info` (
   `create_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+//
+alter table wc_user_info change user_system user_type char(2);
