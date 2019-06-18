@@ -1,16 +1,12 @@
 package com.hope.washcar.controller;
 
-import com.google.gson.JsonObject;
 import com.hope.washcar.bean.UserInfoBean;
 import com.hope.washcar.common.JsonParse;
 import com.hope.washcar.common.RedisUtil;
 import com.hope.washcar.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 

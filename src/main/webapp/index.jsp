@@ -4,11 +4,13 @@
     <title>washCar</title>
     <!-- 引入 Bootstrap -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- 引入 toastr样式 -->
+    <!-- 引入 toastr样式 提示框-->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/toastr/toastr.min.css">
+    <link href="https://cdn.bootcss.com/Ladda/1.0.6/ladda.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- 引入 toastr.js -->
+    <!-- 引入 lodda.js 锁屏-->
+    <!-- 引入 toastr.js 提示框-->
     <script src="${pageContext.request.contextPath}/static/js/toastr/toastr.js"></script>
     <style type="text/css">
         .head {
@@ -42,6 +44,8 @@
 </div>
 <script>
     $(".btn").click(function () {
+        var loading = this;
+        console.log(loading);
         if($("#userName").val() == '') {
             toastr.warning("请输入用户名");
             return ;
@@ -51,7 +55,8 @@
             toastr.warning("请输入密码");
             return ;
         }
-
+        $(".btn").attr('disabled', 'disabled');
+        $(".btn").val('登录中...');
         $.ajax({
             type: "post",
             url: $(".form").attr("action"),
@@ -66,6 +71,7 @@
                 }
             },
             error:function (res) {
+                loading.removeAttr('disabled', 'disabled');
                 toastr.error("登录错误请联系管理员");
                 window.location.reload();
             }
