@@ -31,6 +31,13 @@ public class UserInfoBean {
 
     private Date updateTime;
 
+    public UserInfoBean() {}
+
+    public UserInfoBean(String userName, String userPassword) {
+        this.userName = userName;
+        this.userPassword = userPassword;
+    }
+
     public Integer getUserId() {
         return userId;
     }

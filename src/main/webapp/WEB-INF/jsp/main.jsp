@@ -23,7 +23,7 @@
 <body>
 <div class="head" style="height: 100%; width: 100%">
     <p>
-        <strong>${message}</strong>
+        <strong>主界面</strong>
     </p>
 </div>
 </body>

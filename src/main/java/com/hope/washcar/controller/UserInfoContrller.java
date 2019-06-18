@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * UserInfoContrller
@@ -39,17 +41,26 @@ public class UserInfoContrller {
      */
     @RequestMapping("/login")
     @ResponseBody
-    public ModelAndView login(ModelAndView model, UserInfoBean user) {
-        List<UserInfoBean> userList = userInfoService.checkUser(user);
-        if (userList.size() != 1) {
-            model.addObject("success",false);
-            model.addObject("message","用户或密码错误");
-            model.setViewName("error");
-            return  model;
+    public Map<String, Object> login(ModelAndView model, UserInfoBean user) {
+        Map<String, Object> responseMap = new HashMap<String, Object>(8);
+        /**校验用户是否存在*/
+        List<UserInfoBean> userList = userInfoService.checkUser(new UserInfoBean(user.getUserName(),null));
+        if (userList.size() == 0) {
+            responseMap.put("success",false);
+            responseMap.put("message","用户不存在");
+            return responseMap;
         }
-        model.addObject("success",true);
-        model.setViewName("userInfoList");
-        return model;
+
+        /**校验用户密码*/
+        userList = userInfoService.checkUser(user);
+        if (userList.size() != 1) {
+            responseMap.put("success",false);
+            responseMap.put("message","密码错误");
+            return responseMap;
+        }
+        responseMap.put("success",true);
+        responseMap.put("userInfo",userList.get(0));
+        return responseMap;
     }
 
     /**
