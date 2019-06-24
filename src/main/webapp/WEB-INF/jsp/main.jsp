@@ -275,9 +275,7 @@
             type: "post",
             dataType: "json",
             success: function(data) {
-                console.log(data.menuInfoBeanList)
-                    debugger;
-                    console.log(jsonData);
+                console.log(data.menuInfoBeanList);
                     var menuText = template("asideMenu", data);
                     console.log(menuText);
                     $("#menu").html(menuText);
