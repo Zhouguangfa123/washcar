@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hope.washcar.dao.MenuInfoBeanMapper">
+  <resultMap id="BaseResultMap" type="com.hope.washcar.bean.MenuInfoBean">
+    <id column="MENU_ID" jdbcType="INTEGER" property="menuId" />
+    <result column="MENU_URL" jdbcType="VARCHAR" property="menuUrl" />
+    <result column="MENU_PID" jdbcType="INTEGER" property="menuPid" />
+    <result column="MENU_ORDER" jdbcType="INTEGER" property="menuOrder" />
+    <result column="MENU_SHOW" jdbcType="CHAR" property="menuShow" />
+    <result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="DATE" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    MENU_ID, MENU_URL, MENU_PID, MENU_ORDER, MENU_SHOW, CREATE_TIME, UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wc_menu_info
+    where MENU_ID = #{menuId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wc_menu_info
+    where MENU_ID = #{menuId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hope.washcar.bean.MenuInfoBean">
+    insert into wc_menu_info (MENU_ID, MENU_URL, MENU_PID, 
+      MENU_ORDER, MENU_SHOW, CREATE_TIME, 
+      UPDATE_TIME)
+    values (#{menuId,jdbcType=INTEGER}, #{menuUrl,jdbcType=VARCHAR}, #{menuPid,jdbcType=INTEGER}, 
+      #{menuOrder,jdbcType=INTEGER}, #{menuShow,jdbcType=CHAR}, #{createTime,jdbcType=DATE}, 
+      #{updateTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hope.washcar.bean.MenuInfoBean">
+    insert into wc_menu_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="menuId != null">
+        MENU_ID,
+      </if>
+      <if test="menuUrl != null">
+        MENU_URL,
+      </if>
+      <if test="menuPid != null">
+        MENU_PID,
+      </if>
+      <if test="menuOrder != null">
+        MENU_ORDER,
+      </if>
+      <if test="menuShow != null">
+        MENU_SHOW,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="menuId != null">
+        #{menuId,jdbcType=INTEGER},
+      </if>
+      <if test="menuUrl != null">
+        #{menuUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="menuPid != null">
+        #{menuPid,jdbcType=INTEGER},
+      </if>
+      <if test="menuOrder != null">
+        #{menuOrder,jdbcType=INTEGER},
+      </if>
+      <if test="menuShow != null">
+        #{menuShow,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hope.washcar.bean.MenuInfoBean">
+    update wc_menu_info
+    <set>
+      <if test="menuUrl != null">
+        MENU_URL = #{menuUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="menuPid != null">
+        MENU_PID = #{menuPid,jdbcType=INTEGER},
+      </if>
+      <if test="menuOrder != null">
+        MENU_ORDER = #{menuOrder,jdbcType=INTEGER},
+      </if>
+      <if test="menuShow != null">
+        MENU_SHOW = #{menuShow,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=DATE},
+      </if>
+    </set>
+    where MENU_ID = #{menuId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hope.washcar.bean.MenuInfoBean">
+    update wc_menu_info
+    set MENU_URL = #{menuUrl,jdbcType=VARCHAR},
+      MENU_PID = #{menuPid,jdbcType=INTEGER},
+      MENU_ORDER = #{menuOrder,jdbcType=INTEGER},
+      MENU_SHOW = #{menuShow,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=DATE},
+      UPDATE_TIME = #{updateTime,jdbcType=DATE}
+    where MENU_ID = #{menuId,jdbcType=INTEGER}
+  </update>
+
+  <select id="listLevelOneMenuInfoByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+            SELECT
+       	*
+       FROM
+       	wc_menu_info wmi
+       INNER JOIN wc_auth_config_info waci ON wmi.MENU_ID = waci.MENU_ID
+       AND waci.SHOW_FLAG = 1
+       AND waci.USER_TYPE = (
+       	SELECT
+       		wui.user_type
+       	FROM
+       		wc_user_info wui
+       	WHERE
+       		wui.user_id = 1
+       )
+  </select>
+</mapper>
