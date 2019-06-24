@@ -19,7 +19,7 @@ public class UserInfoBean {
 
     private String userStatus;
 
-    private String userSystem;
+    private String userType;
 
     private String spare1;
 
@@ -78,12 +78,12 @@ public class UserInfoBean {
         this.userStatus = userStatus;
     }
 
-    public String getUserSystem() {
-        return userSystem;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setUserSystem(String userSystem) {
-        this.userSystem = userSystem;
+    public void setUserType(String userSystem) {
+        this.userType = userSystem;
     }
 
     public String getSpare1() {

@@ -31,6 +31,7 @@
 	<mvc:resources location="/static/js/"     mapping="/static/js/**"/>
 	<mvc:resources location="/static/css/"    mapping="/static/css/**"/>
 	<mvc:resources location="/static/images/" mapping="/static/images/**"/>
+	<mvc:resources location="/static/manage/" mapping="/static/manage/**"/>
 	<!-- 登陆拦截器 -->
 	<mvc:interceptors>
 		<mvc:interceptor>

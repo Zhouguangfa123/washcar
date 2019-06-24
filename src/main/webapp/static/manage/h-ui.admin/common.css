@@ -1,0 +1,155 @@
+a:hover,
+a:focus,
+a:visited {
+    text-decoration: none;
+}
+
+.page {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.page * {
+    font-size: 12px;
+}
+
+.page>div>* {
+    width: 30px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    display: inline-block;
+    margin: 3px;
+}
+
+.page a {
+    color: #666;
+    border: 1px solid #ccc;
+}
+
+.page a:hover {
+    background-color: #5a98de;
+    text-decoration: none;
+}
+
+.page span.current {
+    background: #5a98de;
+    color: #fff;
+}
+
+.page-bootstrap {
+    text-align: center;
+    margin: 45px 0;
+}
+
+.page-bootstrap li {
+    display: inline-block;
+}
+
+.page-bootstrap li a,
+.page-bootstrap li span {
+    border: none;
+    background: #fff;
+    border-radius: 3px;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    color: #2f2f2f;
+    line-height: 32px;
+    text-align: center;
+    margin: 3px;
+}
+
+.page-bootstrap li a:hover {
+    background-color: rgba(19, 184, 89, .6);
+    color: #fff;
+    text-decoration: none;
+}
+
+.page-bootstrap li.active span {
+    background: #5a98de;
+    color: #fff;
+}
+
+.page-bootstrap li.disabled span {
+    background: #e0e0e0;
+}
+
+body {
+    background-color: #f6f6f6;
+    padding: 0 30px 30px;
+    box-sizing: border-box;
+}
+
+.table td,
+.table th {
+    text-align: center;
+    padding: 18px 5px;
+    word-break: break-all;
+}
+
+.layui-layer-title {
+    border-bottom: none;
+    background-color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 0 80px 0 30px;
+    height:60px;
+    line-height:60px;
+}
+.layui-layer-setwin{
+	top:20px;
+}
+
+.page-container {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 0 20px 25px;
+}
+
+table thead {
+    border-bottom: 1px solid rgba(51, 51, 51, .12);
+}
+
+table th,
+table td {
+    font-size: 14px;
+    color: #2F2F2F;
+    font-weight: 400 !important;
+}
+
+table th {
+    color: #898989;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+.active a {
+    background-color: #13B859 !important;
+    color: #fff !important;
+}
+
+.layui-layer-shade {
+    background-color: #FFF !important;
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus,
+.breadcrumb a:active,
+.breadcrumb a:visited,
+.breadcrumb input:hover,
+.breadcrumb input:focus,
+.breadcrumb input:active,
+.breadcrumb input:visited {
+    background-color: #1BB359;
+    outline: none;
+}
+select{
+	background-color:#FFF;
+	height:30px;
+}
+.layui-layer-min{
+    display: none !important;
+}

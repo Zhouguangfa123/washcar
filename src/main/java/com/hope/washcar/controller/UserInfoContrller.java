@@ -1,5 +1,6 @@
 package com.hope.washcar.controller;
 
+import com.hope.washcar.bean.MenuInfoBean;
 import com.hope.washcar.bean.UserInfoBean;
 import com.hope.washcar.common.JsonParse;
 import com.hope.washcar.common.RedisUtil;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +40,7 @@ public class UserInfoContrller {
      */
     @RequestMapping("/login")
     @ResponseBody
-    public Map<String, Object> login(ModelAndView model, UserInfoBean user) {
+    public Map<String, Object> login(HttpSession session, UserInfoBean user) {
         Map<String, Object> responseMap = new HashMap<String, Object>(8);
         /**校验用户是否存在*/
         List<UserInfoBean> userList = userInfoService.checkUser(new UserInfoBean(user.getUserName(),null));
@@ -55,7 +58,8 @@ public class UserInfoContrller {
             return responseMap;
         }
         responseMap.put("success",true);
-        responseMap.put("userInfo",userList.get(0));
+        //放入session
+        session.setAttribute("loginUserInfo", userList.get(0));
         return responseMap;
     }
 
@@ -71,5 +75,4 @@ public class UserInfoContrller {
         String jsonStr = JsonParse.GSON.toJson(userInfoService.getUserInfoList(user));
         return jsonStr;
     }
-
 }

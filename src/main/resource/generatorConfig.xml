@@ -50,8 +50,8 @@
 		</javaClientGenerator>
 
 		<!--需要自动生成的表的表名-->
-		<table tableName="wc_user_info"
-			   domainObjectName="Admin" enableCountByExample="false"
+		<table tableName="wc_menu_info"
+			   domainObjectName="MenuInfoBean" enableCountByExample="false"
 			   enableDeleteByExample="false" enableSelectByExample="false"
 			   enableUpdateByExample="false">
 
