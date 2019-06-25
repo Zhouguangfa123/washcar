@@ -29,13 +29,11 @@ public class UserInfoContrller {
     @Autowired
     private UserInfoService userInfoService;
 
-    @Autowired
-    private RedisUtil redisUtil;
-
     /**
      * login 登录
      *
-     * @param  model 视图
+     * @param  session 浏览器session
+     * @param  user 登录用户
      * @return ModelAndView
      */
     @RequestMapping("/login")
@@ -68,11 +66,20 @@ public class UserInfoContrller {
      *
      * @return Map
      */
-    @RequestMapping("/getUserInfoLit")
+    @RequestMapping("/listUserInfos")
     @ResponseBody
     public String getUserInfoLit(UserInfoBean user) {
         System.out.println(user);
         String jsonStr = JsonParse.GSON.toJson(userInfoService.getUserInfoList(user));
         return jsonStr;
+    }
+
+    /**
+     * getUserInfoLit 获取用户详细信息
+     * @return Map
+     */
+    @RequestMapping("/userInfoList")
+    public String userInfoList() {
+        return "userInfoList";
     }
 }

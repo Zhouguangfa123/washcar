@@ -46,7 +46,7 @@
     function initMainTable() {
         var rows = 10;
         //记录页面bootstrap-table全局变量$table，方便应用
-        var queryUrl = 'getUserInfoLit';
+        var queryUrl = 'listUserInfos';
         table = $('#table').bootstrapTable({
             url: queryUrl,                      //请求后台的URL（*）
             method: 'POST',                      //请求方式（*）

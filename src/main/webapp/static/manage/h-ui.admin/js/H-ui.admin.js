@@ -58,6 +58,8 @@ function Hui_admin_tab(obj){
 		show_navLi = topWindow.find("#min_title_list li"),
 		iframe_box = topWindow.find("#iframe_box");
 	//console.log(topWindow);
+	console.log(href);
+	console.log(title);
 	if(!href||href==""){
 		alert("data-href不存在，v2.5版本之前用_href属性，升级后请改为data-href属性");
 		return false;

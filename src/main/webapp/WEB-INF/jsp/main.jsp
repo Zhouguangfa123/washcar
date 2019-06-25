@@ -30,7 +30,6 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/manage/lib/Validform/5.3.2/Validform.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/manage/h-ui.admin/common.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/manage/lib/laydate5.0.9/laydate.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/static/manage/lib/layer/2.4/layer.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/manage/h-ui/js/H-ui.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/manage/lib/template/template.js"></script>
     <title>全控保进件系统</title>
@@ -202,8 +201,8 @@
                     <span>{{val.menuName}}</span>
                     <img class="isshow" src="${pageContext.request.contextPath}/static/manage/images/down.png" alt="" />
                 </dt>
-                {{each menu as item}}
-                {{if item.menuInfoBeanList == val.menuId}}
+                {{each menuInfoBeanList as item}}
+                {{if item.menuPid == val.menuId}}
                 <dd>
                     <a data-href="{{item.menuUrl}}" data-title="{{item.menuName}}" href="javascript:void(0)">{{item.menuName}}</a>
                 </dd>

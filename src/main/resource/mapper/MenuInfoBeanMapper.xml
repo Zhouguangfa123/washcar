@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.hope.washcar.bean.MenuInfoBean">
     <id column="MENU_ID" jdbcType="INTEGER" property="menuId" />
     <result column="MENU_URL" jdbcType="VARCHAR" property="menuUrl" />
+    <result column="MENU_NAME" jdbcType="VARCHAR" property="menuName" />
     <result column="MENU_PID" jdbcType="INTEGER" property="menuPid" />
     <result column="MENU_ORDER" jdbcType="INTEGER" property="menuOrder" />
     <result column="MENU_SHOW" jdbcType="CHAR" property="menuShow" />
