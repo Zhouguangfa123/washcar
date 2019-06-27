@@ -74,12 +74,7 @@ public class UserInfoContrller {
         return jsonStr;
     }
 
-    /**
-     * getUserInfoLit 获取用户详细信息
-     * @return Map
-     */
-    @RequestMapping("/userInfoList")
-    public String userInfoList() {
-        return "userInfoList";
+    private String getToken() {
+        return null;
     }
 }

@@ -1,5 +1,7 @@
 package com.hope.washcar.test;
 
+import java.util.Locale;
+
 /**
  * StringTest
  *
@@ -8,7 +10,10 @@ package com.hope.washcar.test;
  */
 public class StringTest {
     public static void main(String[] args) {
-        String str = "1234";
-        System.out.println(str.substring(0,8));
+        String str = String.format("hi %s","你好");
+        String str1 = String.format("hi %s %s","你好","你好");
+        Locale locale = new Locale("ja", "JP");
+        String str2 = String.format(locale,"hi %s","你好");
+        System.out.println(str2);
     }
 }
