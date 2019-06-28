@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     <context:component-scan
             base-package="com.hope.washcar.*"></context:component-scan>
     <!-- 读取这个资源文件 读完之后下面就可以用${key}来去文件中的value值了 -->
@@ -36,12 +36,14 @@
         <property name="sqlSessionFactoryBeanName"
                   value="sqlSessionFactory"></property>
     </bean>
-    <!--&lt;!&ndash; 对数据源进行事务管理 &ndash;&gt;-->
-    <!--<bean id="transactionManager"-->
-          <!--class="org.springframework.jdbc.datasource.DataSourceTransactionManager"-->
-          <!--p:dataSource-ref="dataSource" />-->
-    <!--<tx:annotation-driven transaction-manager="transactionManager" />-->
-    <!-- 增加redis的properties文件 -->
+    <!--配置事务管理类 ref=数据库源-->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!-- 注解方式配置事务 -->
+    <tx:annotation-driven
+            transaction-manager="transactionManager" />
     <!-- 导入redis的配置文件 -->
     <import resource="redis-config.xml"/>
 </beans>

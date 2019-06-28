@@ -26,4 +26,6 @@ public interface UserInfoMapper {
      * @return UserInfoBean
      */
     List<UserInfoBean> selectUserBySelected(UserInfoBean userInfoBean);
+
+    Integer updateUser();
 }

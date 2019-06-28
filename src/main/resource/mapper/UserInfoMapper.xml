@@ -9,7 +9,7 @@
     <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
     <result column="user_phone" jdbcType="CHAR" property="userPhone" />
     <result column="user_status" jdbcType="CHAR" property="userStatus" />
-    <result column="user_system" jdbcType="CHAR" property="userSystem" />
+    <result column="user_type" jdbcType="CHAR" property="userType" />
     <result column="spare1" jdbcType="VARCHAR" property="spare1" />
     <result column="spare2" jdbcType="VARCHAR" property="spare2" />
     <result column="spare3" jdbcType="VARCHAR" property="spare3" />
@@ -37,5 +37,9 @@
         </if>
 
     </select>
+
+    <update id="updateUser">
+        update wc_user_info set user_phone = '11111' where user_id = 1
+    </update>
 </mapper>
 

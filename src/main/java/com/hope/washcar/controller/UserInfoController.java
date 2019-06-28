@@ -24,7 +24,7 @@ import java.util.Map;
  * @date 2019/6/11
  */
 @Controller
-public class UserInfoContrller {
+public class UserInfoController {
 
     @Autowired
     private UserInfoService userInfoService;
