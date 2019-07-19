@@ -2,7 +2,6 @@ package com.hope.washcar.controller;
 
 import com.hope.washcar.bean.MenuInfoBean;
 import com.hope.washcar.bean.UserInfoBean;
-import com.hope.washcar.common.JsonParse;
 import com.hope.washcar.service.MenuInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

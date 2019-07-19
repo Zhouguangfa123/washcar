@@ -5,13 +5,11 @@ import com.hope.washcar.bean.UserInfoBean;
 import com.hope.washcar.common.JsonParse;
 import com.hope.washcar.common.RedisUtil;
 import com.hope.washcar.service.UserInfoService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +26,8 @@ public class UserInfoController {
 
     @Autowired
     private UserInfoService userInfoService;
+
+    private Logger log = Logger.getLogger(UserInfoController.class);
 
     /**
      * login µÇÂ¼
@@ -55,6 +55,7 @@ public class UserInfoController {
             responseMap.put("message","ÃÜÂë´íÎó");
             return responseMap;
         }
+        log.error("µÇÂ¼³É¹¦");
         responseMap.put("success",true);
         //·ÅÈësession
         session.setAttribute("loginUserInfo", userList.get(0));

@@ -25,6 +25,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     public Map<String,Object> getUserInfoList(UserInfoBean userInfoBean) {
         Map<String,Object> resultMap = new HashMap<>(8);
         List<UserInfoBean> userInfoList = userInfoDao.getUserInfoList(userInfoBean);
+        System.out.println(userInfoList);
         resultMap.put("data", userInfoList);
         return resultMap;
     }

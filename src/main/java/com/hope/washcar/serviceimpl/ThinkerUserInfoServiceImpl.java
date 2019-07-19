@@ -1,7 +1,6 @@
 package com.hope.washcar.serviceimpl;
 
 import com.hope.washcar.bean.ThinkerUserInfoBean;
-import com.hope.washcar.bean.UserInfoBean;
 import com.hope.washcar.dao.ThinkerUserInfoMapper;
 import com.hope.washcar.service.ThinkerUserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
