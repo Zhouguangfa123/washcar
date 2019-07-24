@@ -7,6 +7,9 @@
     <artifactId>washcar</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
+    <name>banseon-maven</name>
+    <!--项目主页的URL, Maven产生的文档用-->
+    <url>http://localhost:8787/washcar/</url>
     <build>
     <plugins>
         <plugin>
