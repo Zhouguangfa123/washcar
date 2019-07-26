@@ -18,7 +18,7 @@ public class ReduceTest {
         Stream<Integer> stream = Arrays.stream(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8});
         //一个流只能使用一次
         Stream<Integer> stream1 = Arrays.stream(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8});
-        //求和
+        //求和 identity 为自身 求和 要给0 api中有写
         Integer result = stream.reduce(8, Integer::sum);
         Integer result1 = stream1.reduce(8, (a,b)-> a+b);
         System.out.println(result);
