@@ -33,8 +33,10 @@ public class StreamTest {
         Collector listCollector = Collectors.toList();
         Collectors.toSet();
         keys = Stream.of(keys).map(String::toUpperCase).toArray(String[]::new);
-        keys = Arrays.stream(keys).map(str -> str + "ss").sorted().toArray(String[]::new);
+        keys = Arrays.stream(keys).map(str -> "5").sorted().toArray(String[]::new);
+        int[] ints = Arrays.stream(keys).mapToInt(key -> Integer.parseInt(key + "3")).toArray();
         System.out.println(Arrays.toString(keys));
+        System.out.println(Arrays.toString(ints));
 
     }
 
