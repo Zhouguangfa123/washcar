@@ -207,6 +207,20 @@
             <version>4.13-beta-2</version>
             <scope>compile</scope>
         </dependency>
+        <!-- office编辑 begin-->
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.11</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.11</version>
+        </dependency>
+        <!-- office编辑 end-->
 
     </dependencies>
 
