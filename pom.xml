@@ -220,6 +220,11 @@
             <artifactId>poi-ooxml</artifactId>
             <version>3.11</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.3.17.RELEASE</version>
+        </dependency>
         <!-- office编辑 end-->
 
     </dependencies>
