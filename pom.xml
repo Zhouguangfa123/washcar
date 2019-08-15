@@ -226,6 +226,22 @@
             <version>4.3.17.RELEASE</version>
         </dependency>
         <!-- office编辑 end-->
+        <!-- ==== mock测试类 begin===-->
+        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.28.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.28.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- ==== mock测试类 end===-->
+
 
     </dependencies>
 
