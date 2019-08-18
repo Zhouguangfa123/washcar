@@ -1,3 +1,4 @@
+/*
 package com.hope.springmvc;
 
 import org.springframework.context.annotation.Bean;
@@ -9,12 +10,14 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+*/
 /**
  * WebConfig
  *
  * @author zhougf
  * @date 2019/08/14
- */
+ *//*
+
 
 @Configuration
 @EnableWebMvc
@@ -39,3 +42,4 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
 
 }
+*/

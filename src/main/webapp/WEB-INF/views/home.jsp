@@ -14,6 +14,13 @@
 <body>
 <a href="<c:url value="/spittles"/>">spitter</a>
 <a href="<c:url value="/spittles" />">register</a>
-<a></a>
+<div>
+    <form id="form" action="saveHome" method="post" enctype="multipart/form-data">
+        <div><input type="text" name="homeName">房屋名称</div>
+        <div><input type="number" name="homeSize">房屋大小</div>
+        <div><input type="file" name="profilePicture" accept="image/gif, image/png">房屋照片</div>
+        <div><input type="submit">保存</div>
+    </form>
+</div>
 </body>
 </html>

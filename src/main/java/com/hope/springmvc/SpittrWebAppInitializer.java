@@ -1,13 +1,16 @@
+/*
 package com.hope.springmvc;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+*/
 /**
  * SpittrWebAppInitializer
  *
  * @author zhougf
  * @date 2019/08/14
- */
+ *//*
+
 public class SpittrWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
@@ -26,3 +29,4 @@ public class SpittrWebAppInitializer extends AbstractAnnotationConfigDispatcherS
         return new String[] {"/"};
     }
 }
+*/
