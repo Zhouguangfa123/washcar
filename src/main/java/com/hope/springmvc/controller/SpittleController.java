@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * SpittleController
@@ -24,10 +25,11 @@ public class SpittleController {
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public String spittles(Model model) {
+    public String spittles(RedirectAttributes model) {
         model.addAttribute(spittleRepository.findSpittles(Long.MAX_VALUE, 20));
         model.addAttribute("ss",spittleRepository.findSpittles(Long.MAX_VALUE, 20));
-        return "spittles";
+        model.addFlashAttribute("xx",spittleRepository);
+        return "redirect:/spittles";
     }
 
 
