@@ -1,3 +1,4 @@
+/*
 package com.hope.springmvc.controller;
 
 import com.hope.springmvc.bean.HomeBean;
@@ -15,12 +16,14 @@ import java.util.List;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+*/
 /**
  * HomeController
  *
  * @author zhougf
  * @date 2019/08/14
- */
+ *//*
+
 @Controller
 @RequestMapping("/home")
 public class HomeController {
@@ -46,3 +49,4 @@ public class HomeController {
 //    }
 
 }
+*/

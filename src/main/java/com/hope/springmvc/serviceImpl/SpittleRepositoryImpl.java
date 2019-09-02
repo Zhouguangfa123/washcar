@@ -1,3 +1,4 @@
+/*
 package com.hope.springmvc.serviceImpl;
 
 import com.hope.springmvc.bean.Spittle;
@@ -8,12 +9,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+*/
 /**
  * SpittleRepositoryImpl
  *
  * @author zhougf
  * @date 2019/08/15
- */
+ *//*
+
 @Component
 public class SpittleRepositoryImpl implements SpittleRepository {
     @Override
@@ -25,3 +28,4 @@ public class SpittleRepositoryImpl implements SpittleRepository {
         return spittles;
     }
 }
+*/

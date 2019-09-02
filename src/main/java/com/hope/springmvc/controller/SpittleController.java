@@ -1,3 +1,4 @@
+/*
 package com.hope.springmvc.controller;
 
 import com.hope.springmvc.service.SpittleRepository;
@@ -8,12 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+*/
 /**
  * SpittleController
  *
  * @author zhougf
  * @date 2019/08/15
- */
+ *//*
+
 @Controller
 @RequestMapping("/spittles")
 public class SpittleController {
@@ -34,3 +37,4 @@ public class SpittleController {
 
 
 }
+*/

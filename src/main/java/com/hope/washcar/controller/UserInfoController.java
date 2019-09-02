@@ -71,7 +71,6 @@ public class UserInfoController {
     @RequestMapping("/listUserInfos")
     @ResponseBody
     public String getUserInfoLit(UserInfoBean user) {
-        System.out.println(user);
         return JsonParse.GSON.toJson(userInfoService.getUserInfoList(user));
     }
 

@@ -1,3 +1,4 @@
+/*
 package com.hope.springmvc;
 
 import com.hope.springmvc.bean.Spittle;
@@ -17,12 +18,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
+*/
 /**
  * Test
  *
  * @author zhougf
  * @date 2019/08/14
- */
+ *//*
+
 public class TestController {
 
     public void testSpitter() {
@@ -55,3 +58,4 @@ public class TestController {
 
 
 }
+*/
