@@ -129,7 +129,7 @@
        	FROM
        		wc_user_info wui
        	WHERE
-       		wui.user_id = 1
+       		wui.user_id = #{userId,jdbcType=INTEGER}
        )
   </select>
 </mapper>

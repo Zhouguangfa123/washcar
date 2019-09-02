@@ -70,7 +70,7 @@
                     window.location.reload();
                 }
             },
-            error:function (res) {
+            error:function () {
                 loading.removeAttr('disabled', 'disabled');
                 toastr.error("登录错误请联系管理员");
                 window.location.reload();

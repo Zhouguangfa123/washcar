@@ -1,3 +1,4 @@
+/*
 package com.hope.poi.util;
 
 import org.apache.poi.xwpf.usermodel.*;
@@ -10,21 +11,25 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+*/
 /**
  * WordUtils
  *
  * @author zhougf
  * @date 2019/8/12
- */
+ *//*
+
 public class WordUtils {
-    /**
+    */
+/**
      * 根据模板生成word
      * @param path     模板的路径
      * @param params   需要替换的参数
      * @param tableList   需要插入的参数
      * @param fileName 生成word文件的文件名
      * @param response
-     */
+     *//*
+
     public void getWord(String path, Map<String, Object> params, List<String[]> tableList, String fileName, HttpServletResponse response) throws Exception {
         File file = new File(path);
         InputStream is = new FileInputStream(file);
@@ -41,11 +46,13 @@ public class WordUtils {
 
     }
 
-    /**
+    */
+/**
      * 替换段落里面的变量
      * @param doc    要替换的文档
      * @param params 参数
-     */
+     *//*
+
     private void replaceInPara(CustomXWPFDocument doc, Map<String, Object> params) {
         Iterator<XWPFParagraph> iterator = doc.getParagraphsIterator();
         XWPFParagraph para;
@@ -55,12 +62,14 @@ public class WordUtils {
         }
     }
 
-    /**
+    */
+/**
      * 替换段落里面的变量
      *
      * @param para   要替换的段落
      * @param params 参数
-     */
+     *//*
+
     private void replaceInPara(XWPFParagraph para, Map<String, Object> params, CustomXWPFDocument doc) {
         List<XWPFRun> runs;
         Matcher matcher;
@@ -125,12 +134,14 @@ public class WordUtils {
     }
 
 
-    /**
+    */
+/**
      * 为表格插入数据，行数不够添加新行
      *
      * @param table     需要插入数据的表格
      * @param tableList 插入数据集合
-     */
+     *//*
+
     private static void insertTable(XWPFTable table, List<String[]> tableList) {
         //创建行,根据需要插入的数据添加新行，不处理表头
         for (int i = 0; i < tableList.size(); i++) {
@@ -150,11 +161,13 @@ public class WordUtils {
         }
     }
 
-    /**
+    */
+/**
      * 替换表格里面的变量
      * @param doc    要替换的文档
      * @param params 参数
-     */
+     *//*
+
     private void replaceInTable(CustomXWPFDocument doc, Map<String, Object> params, List<String[]> tableList) {
         Iterator<XWPFTable> iterator = doc.getTablesIterator();
         XWPFTable table;
@@ -184,12 +197,14 @@ public class WordUtils {
     }
 
 
-    /**
+    */
+/**
      * 正则匹配字符串
      *
      * @param str
      * @return
-     */
+     *//*
+
     private Matcher matcher(String str) {
         Pattern pattern = Pattern.compile("\\$\\{(.+?)\\}", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(str);
@@ -197,12 +212,14 @@ public class WordUtils {
     }
 
 
-    /**
+    */
+/**
      * 根据图片类型，取得对应的图片类型代码
      *
      * @param picType
      * @return int
-     */
+     *//*
+
     private static int getPictureType(String picType) {
         int res = CustomXWPFDocument.PICTURE_TYPE_PICT;
         if (picType != null) {
@@ -221,12 +238,14 @@ public class WordUtils {
         return res;
     }
 
-    /**
+    */
+/**
      * 将输入流中的数据写入字节数组
      *
      * @param in
      * @return
-     */
+     *//*
+
     public static byte[] inputStream2ByteArray(InputStream in, boolean isClose) {
         byte[] byteArray = null;
         try {
@@ -248,11 +267,13 @@ public class WordUtils {
     }
 
 
-    /**
+    */
+/**
      * 关闭输入流
      *
      * @param is
-     */
+     *//*
+
     private void close(InputStream is) {
         if (is != null) {
             try {
@@ -263,11 +284,13 @@ public class WordUtils {
         }
     }
 
-    /**
+    */
+/**
      * 关闭输出流
      *
      * @param os
-     */
+     *//*
+
     private void close(OutputStream os) {
         if (os != null) {
             try {
@@ -278,3 +301,4 @@ public class WordUtils {
         }
     }
 }
+*/

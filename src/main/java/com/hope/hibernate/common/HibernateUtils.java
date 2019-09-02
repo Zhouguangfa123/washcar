@@ -8,23 +8,23 @@ public class HibernateUtils {
 	private static SessionFactory sf;
 	
 	static{
-		//1 åˆ›å»º,è°ƒç”¨ç©ºå‚æ„é€ 
+		//1 ´´½¨,µ÷ÓÃ¿Õ²Î¹¹Ôì
 		Configuration conf = new Configuration().configure();
-		//2 æ ¹æ®é…ç½®ä¿¡æ¯,åˆ›å»º SessionFactoryå¯¹è±¡
+		//2 ¸ù¾İÅäÖÃĞÅÏ¢,´´½¨ SessionFactory¶ÔÏó
 		 sf = conf.buildSessionFactory();
 	}
 	
-	//è·å¾—session => è·å¾—å…¨æ–°session
+	//»ñµÃsession => »ñµÃÈ«ĞÂsession
 	public static Session openSession(){
-				//3 è·å¾—session
+				//3 »ñµÃsession
 				Session session = sf.openSession();
 				
 				return session;
 		
 	}
-	//è·å¾—session => è·å¾—ä¸çº¿ç¨‹ç»‘å®šçš„session
+	//»ñµÃsession => »ñµÃÓëÏß³Ì°ó¶¨µÄsession
 	public static Session getCurrentSession(){
-		//3 è·å¾—session
+		//3 »ñµÃsession
 		Session session = sf.getCurrentSession();
 		
 		return session;

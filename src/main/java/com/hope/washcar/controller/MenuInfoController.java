@@ -21,14 +21,18 @@ import java.util.Map;
 @Controller
 public class MenuInfoController {
 
-    @Autowired
     private MenuInfoService menuInfoService;
+
+    @Autowired
+    private MenuInfoController (MenuInfoService menuInfoService) {
+        this.menuInfoService = menuInfoService;
+    }
 
     /**
      * getLeftMenu 获取左部菜单的数据
      *
      * @param session 容器保存的session信息
-     * @return
+     * @return Map
      */
     @RequestMapping("listLevelOneMenuInfoByUserId")
     @ResponseBody

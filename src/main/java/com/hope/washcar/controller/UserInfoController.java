@@ -1,9 +1,6 @@
 package com.hope.washcar.controller;
-
-import com.hope.washcar.bean.MenuInfoBean;
 import com.hope.washcar.bean.UserInfoBean;
 import com.hope.washcar.common.JsonParse;
-import com.hope.washcar.common.RedisUtil;
 import com.hope.washcar.service.UserInfoService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +21,12 @@ import java.util.Map;
 @Controller
 public class UserInfoController {
 
-    @Autowired
     private UserInfoService userInfoService;
+
+    @Autowired
+    public UserInfoController(UserInfoService userInfoService) {
+        this.userInfoService = userInfoService;
+    }
 
     private Logger log = Logger.getLogger(UserInfoController.class);
 
@@ -39,8 +40,8 @@ public class UserInfoController {
     @RequestMapping("/login")
     @ResponseBody
     public Map<String, Object> login(HttpSession session, UserInfoBean user) {
-        Map<String, Object> responseMap = new HashMap<String, Object>(8);
-        /**校验用户是否存在*/
+        Map<String, Object> responseMap = new HashMap<>(8);
+        //校验用户是否存在
         List<UserInfoBean> userList = userInfoService.checkUser(new UserInfoBean(user.getUserName(),null));
         if (userList.size() == 0) {
             responseMap.put("success",false);
@@ -48,14 +49,14 @@ public class UserInfoController {
             return responseMap;
         }
 
-        /**校验用户密码*/
+        //校验用户密码
         userList = userInfoService.checkUser(user);
         if (userList.size() != 1) {
             responseMap.put("success",false);
             responseMap.put("message","密码错误");
             return responseMap;
         }
-        log.error("登录成功");
+        log.info("登录成功");
         responseMap.put("success",true);
         //放入session
         session.setAttribute("loginUserInfo", userList.get(0));
@@ -71,11 +72,7 @@ public class UserInfoController {
     @ResponseBody
     public String getUserInfoLit(UserInfoBean user) {
         System.out.println(user);
-        String jsonStr = JsonParse.GSON.toJson(userInfoService.getUserInfoList(user));
-        return jsonStr;
+        return JsonParse.GSON.toJson(userInfoService.getUserInfoList(user));
     }
 
-    private String getToken() {
-        return null;
-    }
 }

@@ -30,9 +30,9 @@ public class ThinkerUserInfoServiceImpl implements ThinkerUserInfoService {
     public Map<String, ThinkerUserInfoBean> getUserInfoLit(ThinkerUserInfoBean userInfoBean) {
         Map<String, ThinkerUserInfoBean> resultMap = new HashMap<>();
         ThinkerUserInfoBean resultUser = new ThinkerUserInfoBean();
-        //è·å–æ”¶æ¬¾æ€»é¢
+        //»ñÈ¡ÊÕ¿î×Ü¶î
         BigDecimal countCollection = userInfoDao.countCollection(userInfoBean);
-        //è·å–ä½¿ç”¨å®¢æˆ·é‡
+        //»ñÈ¡Ê¹ÓÃ¿Í»§Á¿
         Long customerUseing = userInfoDao.customerUseing(userInfoBean);
         resultUser.setCollectionCount(countCollection);
         resultUser.setCustomerUseing(customerUseing);
