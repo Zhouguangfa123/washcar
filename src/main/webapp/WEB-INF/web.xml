@@ -32,6 +32,10 @@
             <param-value>classpath:SpringMVC-servlet.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
+        <!-- ===文件传输== -->
+        <multipart-config>
+            <!--<location>/tmp</location>-->
+        </multipart-config>
     </servlet>
     <servlet-mapping>
         <servlet-name>SpringMVC</servlet-name>
